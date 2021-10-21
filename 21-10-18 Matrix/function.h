@@ -8,8 +8,8 @@ using namespace std;
 
 class Matrix
 {
-	int r, c;
 public:
+	int r, c;
 	double** p;
 	Matrix(int a, int b);
 	Matrix(int a, int b,int );
