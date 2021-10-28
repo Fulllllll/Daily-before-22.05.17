@@ -4,7 +4,7 @@
 #include<time.h>
 
 
-//srand(); 设置rand函数的生成基准点
+//srand(); 设置rand函数的生成基准点  
 //rand();  从基准点开始生成伪随机数
 
 int main()			//最终
