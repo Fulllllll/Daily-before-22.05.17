@@ -1,25 +1,29 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
-
-
+#include<easyx.h>
 int main()
 {
-	int a[10] = { 1,2,3,4,5,6,7,8,9,10};
-	int l = 0, r = sizeof(a)/ sizeof(a[0])-1;
-	int mid = 0;
-	while (l <= r)  //查找 7
-	{
-		mid = (l + r) / 2;
-		if (7 < a[mid])
-			r = mid;
-		else if (7 > a[mid])
-			l = mid + 1;
-		else
-			break;
-	}
-	printf("%d", mid);//查找输出元素的下标
+
 	return 0;
 }
+//int main()
+//{
+//	int a[10] = { 1,2,3,4,5,6,7,8,9,10};
+//	int l = 0, r = sizeof(a)/ sizeof(a[0])-1;
+//	int mid = 0;
+//	while (l <= r)  //查找 7
+//	{
+//		mid = (l + r) / 2;
+//		if (7 < a[mid])
+//			r = mid;
+//		else if (7 > a[mid])
+//			l = mid + 1;
+//		else
+//			break;
+//	}
+//	printf("%d", mid);//查找输出元素的下标
+//	return 0;
+//}
 //
 //int main()
 //{
