@@ -39,7 +39,7 @@ bool InitList(SqList& L)
 
 void function(SqList& L)
 {
-	element a[L.lenth];
+	element a[MAX];
 	int count = 0;
 	int i = 0, j = 0;
 	for (i = 0; i < L.lenth; i++)
@@ -50,8 +50,11 @@ void function(SqList& L)
 		}
 		if (j >= i) a[count++] = L.elem[i];
 	}
-	L.elem = a;
-	L.lenth = count;
+	L.lenth=count;
+	for(i=0;i<count;i++)
+	{
+		L.elem[i]=a[i];
+	}
 }
 
 
@@ -72,3 +75,5 @@ void initRandomize(int* arr, int n, int min, int max)
 //        printf("%d ", arr[i]);
 	}
 }
+
+
