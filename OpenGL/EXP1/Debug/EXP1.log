@@ -1,0 +1,10 @@
+﻿  EXP1.cpp
+C:\Users\lxy\Desktop\test\EXP1\EXP1.cpp(32,20): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+C:\Users\lxy\Desktop\test\EXP1\EXP1.cpp(38,32): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+C:\Users\lxy\Desktop\test\EXP1\EXP1.cpp(42,37): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+C:\Users\lxy\Desktop\test\EXP1\EXP1.cpp(49,20): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+C:\Users\lxy\Desktop\test\EXP1\EXP1.cpp(55,32): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+C:\Users\lxy\Desktop\test\EXP1\EXP1.cpp(59,37): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+C:\Users\lxy\Desktop\test\EXP1\EXP1.cpp(90,20): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+C:\Users\lxy\Desktop\test\EXP1\EXP1.cpp(91,21): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+  EXP1.vcxproj -> C:\Users\lxy\Desktop\test\EXP1\Debug\EXP1.exe
