@@ -15,14 +15,15 @@ void InitBoard(char board[ROW + 2][COL + 2], int rows, int cols, char set)
 void Display(char board[ROW + 2][COL + 2], int row, int col)
 {
 	int i = 0, j = 0;
-	printf("    ");
+	printf("   |");
 	for (i = 1; i <= col; i++)	printf("%d ", i);
 	printf("\n");
-	for (i = 0; i <= col+1; i++)	printf("__");
+	printf("   |");
+	for (i = 2; i <= col+1; i++)	printf("_|");
 	printf("\n");
 	for (int i = 1; i <= row; i++)
 	{
-		printf("%d  |", i);
+		printf("%3.d|", i);
 		for (int j = 1; j <=col; j++)
 		{
 			printf("%c ", board[i][j]);
@@ -64,7 +65,7 @@ void FindMine(char mine[ROW + 2][COL + 2], char show[ROW+2][COL+2], int row, int
 	{
 		printf("请输入要排查的坐标:>");
 		scanf("%d %d", &x, &y);
-		if (x>0 && x<=row && y>0 && y<=col)
+		if (x>0 && x<=row && y>0 && y<=col&& show[x][y] == '*')
 		{
 			if (mine[x][y] == '1')
 			{
@@ -77,8 +78,8 @@ void FindMine(char mine[ROW + 2][COL + 2], char show[ROW+2][COL+2], int row, int
 				//计算坐标周围有几个雷
 				show[x][y] = Getminenum(mine, x, y) + '0';
 				system("cls");
-				Display(mine, ROW, COL);
-				printf("\n\n");
+				//Display(mine, ROW, COL);
+				//printf("\n\n");
 				Display(show, ROW, COL);
 				win++;
 			}
