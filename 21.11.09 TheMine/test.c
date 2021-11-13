@@ -12,6 +12,7 @@ void game()
 {
 	char mine[ROW + 2][COL + 2] = { 0 };  //存放是否有雷的信息
 	char show[ROW + 2][COL + 2] = { 0 };  //用来显示周围雷数
+	int boomcount[ROW + 2][COL + 2] = { 0 };
 	//初始化mine 数组为全字符'0'
 	InitBoard(mine, ROW + 2, COL + 2, '0');
 	//初始化show 数组为全字符'*'
@@ -19,12 +20,12 @@ void game()
 	
 	//初始化雷阵
 	SetMine(mine, ROW, COL);
-	Display(mine, ROW, COL);
-	printf("\n\n");
+	//Display(mine, ROW, COL);
+	//printf("\n\n");
 	Display(show, ROW, COL);
 
 	//排雷ing (正式游戏)
-	FindMine(mine, show, ROW, COL);
+	FindMine(mine, show, boomcount, ROW, COL);
 }
 void test()
 {
