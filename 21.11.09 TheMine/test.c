@@ -20,8 +20,8 @@ void game()
 	
 	//初始化雷阵
 	SetMine(mine, ROW, COL);
-	//Display(mine, ROW, COL);
-	//printf("\n\n");
+	Display(mine, ROW, COL);
+	printf("\n\n");
 	Display(show, ROW, COL);
 
 	//排雷ing (正式游戏)

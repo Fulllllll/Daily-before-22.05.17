@@ -69,8 +69,9 @@ void FindMine(char mine[ROW + 2][COL + 2], char show[ROW+2][COL+2],int bcount[RO
 		{
 			if (mine[x][y] == '1')
 			{
-				printf("很遗憾......\n");
+				printf("很遗憾，你输了......\n");
 				Display(mine, row, col);
+				system("pause");
 				return;
 			}
 			else
@@ -78,8 +79,8 @@ void FindMine(char mine[ROW + 2][COL + 2], char show[ROW+2][COL+2],int bcount[RO
 				Dig(mine, show, bcount, x, y, &win);
 				//计算坐标周围有几个雷
 				system("cls");
-				//Display(mine, ROW, COL);
-				//printf("\n\n");
+				Display(mine, ROW, COL);
+				printf("\n\n");
 				Display(show, ROW, COL);
 			}
 		}
@@ -103,6 +104,7 @@ void Dig(char mine[ROW + 2][COL + 2], char show[ROW + 2][COL + 2], int flag[ROW 
 
 		if (show[x][y] == '0')
 		{
+			show[x][y] = ' ';
 			int i = 0, j = 0;
 			for (i = -1; i < 2; i++)
 			{
