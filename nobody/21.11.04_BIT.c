@@ -3,14 +3,10 @@
 
 int main()
 {
-	int a, b,c,n=0;
-	sancf("%d %d", &a, &b);
-	c = a ^ b;
-	while (c)
-	{
-		n++;
-		c = c & (c - 1);
-	}
-	printf("%d\n", n);
+	char a = 126;
+	char b = 5;
+	char c = a + b;
+	printf("%d\n", c);
+	printf("%c\n", c);
 	return 0;
 }
