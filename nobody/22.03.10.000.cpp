@@ -167,188 +167,186 @@ using namespace std;
 
 
 
-//int b[100] = { 0 };
-//
-//void Merge(int c[], int d[], int l, int m, int r);
-//void mergepass(int x[], int y[], int s, int n);
-//void MergeSort1(int a[], int l, int r);
-//void MergeSort2(int a[], int n);
-//void copy(int a[], int b[], int l, int r);
-//
-//
-//
-//int main()
-//{
-//	int a[100] = { 6,5,4,3,2,1,7,8,9,0,11,10 }; //12个元素
-//	//MergeSort1(a, 0, 11);
-//	MergeSort2(a, 12);
-//	for (int i = 0; i < 12; i++)
-//	{
-//		printf("%d  ", a[i]);
-//	}
-//	return 0;
-//}
-//
-//void Merge(int c[], int d[], int l, int m, int r)
-//{
-//	int i = l, j = m + 1, k = l;
-//	while ((i <= m) && (j <= r))
-//	{
-//		if (c[i] <= c[j])
-//			d[k++] = c[i++];
-//		else
-//			d[k++] = c[j++];
-//	}
-//	if (i > m)
-//	{
-//		for (int q = j; q <= r; q++)
-//			d[k++] = c[q];
-//	}
-//	else
-//	{
-//		for (int q = i; q <= m; q++)
-//			d[k++] = c[q];
-//	}
-//}
-//
-//void mergepass(int x[], int y[], int s, int n)
-//{
-//	int i = 0;
-//	while (i <= n - 2 * s)
-//	{
-//		Merge(x, y, i, i + s - 1, i + 2 * s - 1);
-//		i += 2 * s;
-//	}
-//	if (i + s < n)
-//	{
-//		Merge(x, y, i, i + s - 1, n - 1);
-//	}
-//	else
-//	{
-//		for (int j = i; j <= n - 1; j++)
-//		{
-//			y[j] = x[j];
-//		}
-//	}
-//}
-//
-//void MergeSort1(int a[], int l, int r)
-//{
-//	if (l < r)
-//	{
-//		int m = (l + r) / 2;
-//		MergeSort1(a, l, m);
-//		MergeSort1(a, m + 1, r);
-//		Merge(a, b, l, m, r);
-//		copy(a, b, l, r);
-//	}
-//}
-//void MergeSort2(int a[], int n)
-//{
-//	int s = 1;
-//	while (s < n)
-//	{
-//		mergepass(a, b, s, n);
-//		s += s;
-//		mergepass(b, a, s, n);
-//		s += s;
-//	}
-//}
-//
-//void copy(int a[], int b[], int l, int r)
-//{
-//	for (int i = l; i <= r; i++)
-//	{
-//		a[i] = b[i];
-//	}
-//}
+int b[100] = { 0 };
 
+void Merge(int c[], int d[], int l, int m, int r);
+void mergepass(int x[], int y[], int s, int n);
+void MergeSort1(int a[], int l, int r);
+void MergeSort2(int a[], int n);
+void copy(int a[], int b[], int l, int r);
 
-#include <iostream>
-#include <vector>
-#include <string>
-#include <utility>
-using namespace std;
-
-int word_analysis(vector<pair<string, int>>& word, const string expr)
+int main()
 {
-	for (int i = 0; i < expr.length(); ++i)
+	int a[100] = { 6,5,4,3,2,1,7,8,9,0,11,10 }; //12个元素
+	//MergeSort1(a, 0, 11);
+	MergeSort2(a, 12);
+	for (int i = 0; i < 12; i++)
 	{
-		// 如果是 + - * / ( )
-		if (expr[i] == '(' || expr[i] == ')' || expr[i] == '+'
-			|| expr[i] == '-' || expr[i] == '*' || expr[i] == '/')
-		{
-			string tmp;
-			tmp.push_back(expr[i]);
-			switch (expr[i])
-			{
-			case '+':
-				word.push_back(make_pair(tmp, 1));
-				break;
-			case '-':
-				word.push_back(make_pair(tmp, 2));
-				break;
-			case '*':
-				word.push_back(make_pair(tmp, 3));
-				break;
-			case '/':
-				word.push_back(make_pair(tmp, 4));
-				break;
-			case '(':
-				word.push_back(make_pair(tmp, 6));
-				break;
-			case ')':
-				word.push_back(make_pair(tmp, 7));
-				break;
-			}
-		}
-		// 如果是数字开头
-		else if (expr[i] >= '0' && expr[i] <= '9')
-		{
-			string tmp;
-			while (expr[i] >= '0' && expr[i] <= '9')
-			{
-				tmp.push_back(expr[i]);
-				++i;
-			}
-			if (expr[i] == '.')
-			{
-				++i;
-				if (expr[i] >= '0' && expr[i] <= '9')
-				{
-					tmp.push_back('.');
-					while (expr[i] >= '0' && expr[i] <= '9')
-					{
-						tmp.push_back(expr[i]);
-						++i;
-					}
-				}
-				else
-				{
-					return -1;  // .后面不是数字，词法错误
-				}
-			}
-			word.push_back(make_pair(tmp, 5));
-			--i;
-		}
-		// 如果以.开头
-		else
-		{
-			return -1;  // 以.开头，词法错误
-		}
+		printf("%d  ", a[i]);
 	}
 	return 0;
 }
 
-int main()
+void Merge(int c[], int d[], int l, int m, int r)
 {
-	vector<pair<string, int>> word;
-	string expr = "6+2*(2+13";
-
-	int err_num = word_analysis(word, expr);
-	if (-1 == err_num)
-		cout << "Word Error!" << endl;
+	int i = l, j = m + 1, k = l;
+	while ((i <= m) && (j <= r))
+	{
+		if (c[i] <= c[j])
+			d[k++] = c[i++];
+		else
+			d[k++] = c[j++];
+	}
+	if (i > m)
+	{
+		for (int q = j; q <= r; q++)
+			d[k++] = c[q];
+	}
 	else
-		cout << "No Word Error!" << endl;
-	return 0;
+	{
+		for (int q = i; q <= m; q++)
+			d[k++] = c[q];
+	}
 }
+
+void mergepass(int x[], int y[], int s, int n)
+{
+	int i = 0;
+	while (i <= n - 2 * s)
+	{
+		Merge(x, y, i, i + s - 1, i + 2 * s - 1);
+		i += 2 * s;
+	}
+	if (i + s < n)
+	{
+		Merge(x, y, i, i + s - 1, n - 1);
+	}
+	else
+	{
+		for (int j = i; j <= n - 1; j++)
+		{
+			y[j] = x[j];
+		}
+	}
+}
+
+void MergeSort1(int a[], int l, int r)
+{
+	if (l < r)
+	{
+		int m = (l + r) / 2;
+		MergeSort1(a, l, m);
+		MergeSort1(a, m + 1, r);
+		Merge(a, b, l, m, r);  
+		copy(a, b, l, r);
+	}
+}
+void MergeSort2(int a[], int n)
+{
+	int s = 1;
+	while (s < n)
+	{
+		mergepass(a, b, s, n);
+		s += s;
+		mergepass(b, a, s, n);
+		s += s;
+	}
+}
+
+void copy(int a[], int b[], int l, int r)
+{
+	for (int i = l; i <= r; i++)
+	{
+		a[i] = b[i];
+	}
+}
+
+
+//#include <iostream>
+//#include <vector>
+//#include <string>
+//#include <utility>
+//using namespace std;
+//
+//int word_analysis(vector<pair<string, int>>& word, const string expr)
+//{
+//	for (int i = 0; i < expr.length(); ++i)
+//	{
+//		// 如果是 + - * / ( )
+//		if (expr[i] == '(' || expr[i] == ')' || expr[i] == '+'
+//			|| expr[i] == '-' || expr[i] == '*' || expr[i] == '/')
+//		{
+//			string tmp;
+//			tmp.push_back(expr[i]);
+//			switch (expr[i])
+//			{
+//			case '+':
+//				word.push_back(make_pair(tmp, 1));
+//				break;
+//			case '-':
+//				word.push_back(make_pair(tmp, 2));
+//				break;
+//			case '*':
+//				word.push_back(make_pair(tmp, 3));
+//				break;
+//			case '/':
+//				word.push_back(make_pair(tmp, 4));
+//				break;
+//			case '(':
+//				word.push_back(make_pair(tmp, 6));
+//				break;
+//			case ')':
+//				word.push_back(make_pair(tmp, 7));
+//				break;
+//			}
+//		}
+//		// 如果是数字开头
+//		else if (expr[i] >= '0' && expr[i] <= '9')
+//		{
+//			string tmp;
+//			while (expr[i] >= '0' && expr[i] <= '9')
+//			{
+//				tmp.push_back(expr[i]);
+//				++i;
+//			}
+//			if (expr[i] == '.')
+//			{
+//				++i;
+//				if (expr[i] >= '0' && expr[i] <= '9')
+//				{
+//					tmp.push_back('.');
+//					while (expr[i] >= '0' && expr[i] <= '9')
+//					{
+//						tmp.push_back(expr[i]);
+//						++i;
+//					}
+//				}
+//				else
+//				{
+//					return -1;  // .后面不是数字，词法错误
+//				}
+//			}
+//			word.push_back(make_pair(tmp, 5));
+//			--i;
+//		}
+//		// 如果以.开头
+//		else
+//		{
+//			return -1;  // 以.开头，词法错误
+//		}
+//	}
+//	return 0;
+//}
+//
+//int main()
+//{
+//	vector<pair<string, int>> word;
+//	string expr = "6+2*(2+13";
+//
+//	int err_num = word_analysis(word, expr);
+//	if (-1 == err_num)
+//		cout << "Word Error!" << endl;
+//	else
+//		cout << "No Word Error!" << endl;
+//	return 0;
+//}
